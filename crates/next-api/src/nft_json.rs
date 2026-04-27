@@ -487,6 +487,7 @@ struct ModulePaths(FxHashMap<ResolvedVc<Box<dyn Module>>, ReadRef<FileSystemPath
 /// This caches the paths for all modules in the graph so that we don't have to do it once per page.
 #[turbo_tasks::function]
 async fn module_paths_for_graph(module_graph: Vc<ModuleGraph>) -> Result<Vc<ModulePaths>> {
+    // TODO this could potentially only compute the idents of the traced modules.
     Ok(Vc::cell(
         module_graph
             .await?
