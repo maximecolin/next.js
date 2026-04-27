@@ -2355,7 +2355,7 @@ impl<B: BackingStorage> TurboTasksBackendInner<B> {
                 feature = "trace_aggregation_update_stats"
             ))]
             let _span =
-                tracing::trace_span!("remove old edges and prepare new children", stats = Empty)
+                tracing::trace_span!("remove old edges and prepare new children", stats = tracing::field::Empty)
                     .entered();
             // Remove outdated edges first, before removing in_progress+dirty flag.
             // We need to make sure all outdated edges are removed before the task can potentially
